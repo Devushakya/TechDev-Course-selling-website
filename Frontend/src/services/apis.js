@@ -1,6 +1,8 @@
 
-const BASE_URL = "http://localhost:4000/api/v1";
-// console.log("dekh le", BASE_URL);
+const BASE_URL =
+  process.env.REACT_APP_BACKEND_URL ||
+  "https://techdev-online-course-selling-website.onrender.com/api/v1";
+// console.log("Backend URL:", BASE_URL);
 
 // AUTH ENDPOINTS
 export const endpoints = {
