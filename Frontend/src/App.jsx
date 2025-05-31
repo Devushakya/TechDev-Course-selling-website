@@ -25,6 +25,7 @@ import EditCourse from "./components/core/dashboard/EditCourse/EditCourse";
 import CategoryMain from "./components/core/CategoryPage/CategoryMain";
 import CoursePage from "./pages/CoursePage";
 import ViewCourse from "./pages/ViewCourse";
+import VideoPlayerPage from "./components/core/ViewCoursePage/VideoPlayerPage";
 
 function App() {
   const { user } = useSelector((state) => state.profile);
@@ -80,7 +81,13 @@ function App() {
         <Route path="*" element={<Error />} />
         <Route path="courses/:courseId" element={<CoursePage />} />
         {user?.accountType === "Student" && (
-          <Route path="view-course/:courseId" element={<ViewCourse />} />
+          <>
+            <Route path="view-course/:courseId" element={<ViewCourse />} />
+            <Route
+              path="view-course/video/:secId"
+              element={<VideoPlayerPage />}
+            />
+          </>
         )}
 
         <Route

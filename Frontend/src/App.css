@@ -9,6 +9,8 @@ body {
   overflow-x: hidden;
 }
 
+
+
 .swiper-pagination .swiper-pagination-bullet {
   background-color: #debd09 !important;
 }
@@ -66,3 +68,12 @@ input::-webkit-inner-spin-button {
     transform: rotate(360deg);
   }
 } 
+
+/* Hide scrollbar but allow scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

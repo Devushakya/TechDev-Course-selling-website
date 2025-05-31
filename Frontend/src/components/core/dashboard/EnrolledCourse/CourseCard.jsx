@@ -43,13 +43,13 @@ const CourseCard = ({ course, courseProgress }) => {
   return (
     <div
       onClick={navigateit}
-      className="bg-richblack-700 hover:cursor-pointer rounded-2xl flex flex-row gap-4 p-2"
+      className="bg-richblack-700 hover:cursor-pointer rounded-2xl flex flex-col sm:flex-row gap-4 p-2"
     >
-      <div className="w-[25%]">
+      <div className="w-full sm:w-[25%]">
         <img
           src={course?.thumbnail}
           alt={course?.courseName}
-          className="h-[150px] rounded-md object-cover w-full"
+          className="rounded-md object-cover w-full aspect-[16/9] sm:aspect-auto"
         />
       </div>
 

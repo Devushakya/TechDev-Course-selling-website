@@ -133,6 +133,7 @@ exports.updateDisplayPicture = async (req, res) => {
       1000,
       1000
     );
+    
     console.log(image);
     const updatedProfile = await userModel.findByIdAndUpdate(
       { _id: userId },

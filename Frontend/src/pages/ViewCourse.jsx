@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import bg from "../assets/Images/downloadCourseToSee.png";
+import VideoViewer from "../components/core/ViewCoursePage/MainViewCourse";
 
 const ViewCourse = () => {
   const { user } = useSelector((state) => state.profile);
@@ -35,7 +36,9 @@ const ViewCourse = () => {
           </div>
         </div>
       ) : (
-        <div></div>
+        <div>
+          <VideoViewer courseId={courseId} />
+        </div>
       )}
     </div>
   );

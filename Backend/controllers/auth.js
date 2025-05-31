@@ -7,6 +7,23 @@ const jwt = require("jsonwebtoken");
 const mailSender = require("../utils/mailSender");
 require("dotenv").config();
 
+
+exports.ConnectBackend= async(req,res)=>{
+  try {
+    return res.status(200).json({
+      success: true,
+      message: "Backend connection successful.",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: "Error while connecting to Backend",
+    });
+  }
+
+}
+
 //otp sending controller
 exports.sendOTP = async (req, res) => {
   try {

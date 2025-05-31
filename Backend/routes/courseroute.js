@@ -12,6 +12,7 @@ const {
   getInstructorCourses,
   getEnrolledCourses,
   changeState,
+  updateCourseProgress,
 } = require("../controllers/course");
 
 //category me se
@@ -40,6 +41,7 @@ const {
   createRating,
   getAvgRating,
   getallRating,
+  confirmRating
 } = require("../controllers/ratingandReview");
 const {
   auth,
@@ -57,6 +59,7 @@ router.get("/getFullCourseDetails", auth, getFullCourseDetails);
 router.get("/getInstructorCourses", auth, isInstructor, getInstructorCourses);
 router.get("/getEnrolledCourses", auth, getEnrolledCourses);
 router.post("/changeState", auth, isInstructor, changeState);
+router.post("/updateCourseProgress", auth , isStudent , updateCourseProgress)
 // router.post 
 
 router.post("/createCategory", auth, isAdmin, createCategory);
@@ -74,5 +77,6 @@ router.delete("/deleteSubSection", auth, isInstructor, deleteSubSection);
 router.post("/createRating", auth, isStudent, createRating);
 router.get("/getAvgRating", getAvgRating);
 router.get("/getallRating", getallRating);
+router.get("/confirmRating",auth,isStudent,confirmRating);
 
 module.exports = router;

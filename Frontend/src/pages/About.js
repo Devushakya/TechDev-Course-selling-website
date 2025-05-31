@@ -4,15 +4,15 @@ import BannerImage1 from "../assets/Images/aboutus1.webp";
 import BannerImage2 from "../assets/Images/aboutus2.webp";
 import BannerImage3 from "../assets/Images/aboutus3.webp";
 import FoundingStory from "../assets/Images/FoundingStory.png";
-import LearningGrid from "../components/core/aboutPage/LearningGrid"
+import LearningGrid from "../components/core/aboutPage/LearningGrid";
 
 const About = () => {
-    const Stats = [
-      { count: "5K", label: "Active Students" },
-      { count: "10+", label: "Mentors" },
-      { count: "200+", label: "Courses" },
-      { count: "50+", label: "Awards" },
-    ];
+  const Stats = [
+    { count: "5K", label: "Active Students" },
+    { count: "10+", label: "Mentors" },
+    { count: "200+", label: "Courses" },
+    { count: "50+", label: "Awards" },
+  ];
   return (
     <div>
       <section className=" bg-richblack-700">
@@ -28,7 +28,7 @@ const About = () => {
             nurturing a vibrant learning community.
           </p>
           <div className="sm:h-[70px] lg:h-[230px]"></div>
-          <div className="absolute bottom-0 left-[50%] grid w-[100%] translate-x-[-50%] translate-y-[30%] grid-cols-3 gap-3 lg:gap-5">
+          <div className="hidden md:grid absolute bottom-0 left-[50%] w-[100%] translate-x-[-50%] translate-y-[30%] grid-cols-3 gap-3 lg:gap-5">
             <img src={BannerImage1} alt="" />
             <img src={BannerImage2} alt="" />
             <img src={BannerImage3} alt="" />
@@ -133,7 +133,6 @@ const About = () => {
       </section>
       <section className="mx-auto mt-20 flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-white">
         <LearningGrid />
-        
       </section>
     </div>
   );

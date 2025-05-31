@@ -57,13 +57,17 @@ exports.categoryPageDetails = async (req, res) => {
     const categoryID = await categoryModel.findOne({ name: categoryName });
     console.log("kya ye sech hai", categoryID);
 
-    const selectedCategory = await categoryModel.findById(categoryID).populate({
-      path: "course",
-      match: { status: "Published" },
-      populate: {
-        path: "instructor",
-      },
-    });
+    const selectedCategory = await categoryModel
+      .findById(categoryID)
+      .populate({
+        path: "course",
+        match: { status: "Published" },
+        populate: {
+          path: "instructor",
+          path: "ratingAndReview",
+        },
+      })
+      .exec();
 
     console.log("selected courses", selectedCategory);
 
@@ -80,7 +84,7 @@ exports.categoryPageDetails = async (req, res) => {
         message: "no course found in category",
       });
     }
-    
+
     const sortedCourses = [...selectedCategory.course].sort(
       (a, b) => b.studentsEnrolled.length - a.studentsEnrolled.length
     );
@@ -94,6 +98,7 @@ exports.categoryPageDetails = async (req, res) => {
         match: { status: "Published" },
         populate: {
           path: "instructor",
+          path: "ratingAndReview",
         },
       });
     let differentcourse = [];
@@ -109,6 +114,7 @@ exports.categoryPageDetails = async (req, res) => {
         match: { status: "Published" },
         populate: {
           path: "instructor",
+          path: "ratingAndReview",
         },
       })
       .exec();

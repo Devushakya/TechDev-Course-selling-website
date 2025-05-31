@@ -3,6 +3,7 @@ const categoryModel = require("../models/Category");
 const courseModel = require("../models/Course");
 const sectionModel = require("../models/Section");
 const subsectionModel = require("../models/SubSection");
+const courseProgressModel = require("../models/CourceProgress");
 const { uploadToCloudinary } = require("../utils/uploadToCloudinary");
 
 require("dotenv").config();
@@ -475,26 +476,22 @@ exports.getEnrolledCourses = async (req, res) => {
     const userId = req.user.id;
     const userDetails = await Usermodel.findOne({ _id: userId })
       .populate([
-  {
-    path: "course",
-    populate: [
-      { path: "category" }, 
-      {
-        path: "courseContent",
-        populate: { path: "SubSection" },
-      },
-    ],
-  },
-  {
-    path: "courseProgress",
-    populate: [
-      { path: "courseID" },
-      { path: "completedVideos" },
-    ],
-  },
-])
-.exec();
-
+        {
+          path: "course",
+          populate: [
+            { path: "category" },
+            {
+              path: "courseContent",
+              populate: { path: "SubSection" },
+            },
+          ],
+        },
+        {
+          path: "courseProgress",
+          populate: [{ path: "courseID" }, { path: "completedVideos" }],
+        },
+      ])
+      .exec();
 
     if (!userDetails) {
       return res.status(400).json({
@@ -549,6 +546,43 @@ exports.changeState = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+exports.updateCourseProgress = async (req, res) => {
+  try {
+    const { courseId, subsecId } = req.body;
+    const userId = req.user.id;
+
+    console.log("subsection ki id", subsecId);
+
+    const progress = await courseProgressModel.findOne({
+      courseID: courseId,
+      userId: userId,
+    });
+
+    if (!progress) {
+      return res.status(404).json({
+        success: false,
+        message: "Course progress not found",
+      });
+    }
+
+    if (!progress.completedVideos.includes(subsecId)) {
+      progress.completedVideos.push(subsecId);
+      await progress.save();
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Course progress updated successfully",
+    });
+  } catch (error) {
+    console.error(error);
     return res.status(500).json({
       success: false,
       message: error.message,

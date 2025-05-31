@@ -1,7 +1,6 @@
-
-const BASE_URL =
-  process.env.REACT_APP_BACKEND_URL ||
-  "https://techdev-online-course-selling-website.onrender.com/api/v1";
+const BASE_URL = "http://localhost:4000/api/v1";
+// process.env.REACT_APP_BACKEND_URL ||
+// "https://techdev-online-course-selling-website.onrender.com/api/v1";
 // console.log("Backend URL:", BASE_URL);
 
 // AUTH ENDPOINTS
@@ -47,6 +46,7 @@ export const courseEndpoints = {
   LECTURE_COMPLETION_API: BASE_URL + "/updateCourseProgress",
   CREATE_RATING_API: BASE_URL + "/createRating",
   CHANGE_STATE_API: BASE_URL + "/changeState",
+  CONFIRM_RATING_API: BASE_URL + "/confirmRating",
 };
 
 // RATINGS AND REVIEWS

@@ -16,7 +16,6 @@ const CourseFloat = ({ course, buyCoursehandler }) => {
   const navigate = useNavigate();
 
   const isCourseInCart = cart.some((item) => item?._id === course?._id);
-  // console.log("isCourseInCart", isCourseInCart);
 
   const HandleShare = () => {
     toast.success("Copied to clipboard");
@@ -33,13 +32,20 @@ const CourseFloat = ({ course, buyCoursehandler }) => {
   };
 
   return (
-    <div className="absolute bg-richblack-600 rounded-md p-4 shadow-lg flex flex-col space-y-4 translate-x-[120%] translate-y-[20%]">
+    <div
+      className="
+      bg-richblack-600 rounded-md p-4 shadow-lg flex flex-col space-y-4
+      w-full max-w-md
+      mx-auto
+      lg:absolute lg:right-10 lg:top-[50%] lg:mx-0 lg:w-[300px]
+    "
+    >
       <div className="items-center">
         <div>
           <img
             src={course?.thumbnail}
             alt={course?.courseName}
-            className="max-h-[200px] min-h-[180px] w-[300px] overflow-hidden rounded-2xl object-cover md:max-w-full"
+            className="max-h-[200px] min-h-[180px] w-full overflow-hidden rounded-2xl object-cover md:max-w-full"
           />
         </div>
 
