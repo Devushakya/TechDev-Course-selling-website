@@ -26,7 +26,7 @@ exports.resetPasswordToken = async (req, res) => {
     );
 
     //creating url to send in mail
-    const url = `http://localhost:3000/update-password/${token}`;
+    const url = `https://techdev-course-selling-website.onrender.com/update-password/${token}`;
     //sending url in mail
     const passwordResetHTML = `
       <!DOCTYPE html>
