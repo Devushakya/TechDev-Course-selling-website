@@ -21,7 +21,7 @@ const Home = () => {
 
       try {
         const response = await fetch(
-          "http://localhost:4000/api/v1/connectBackend"
+          "https://techdev-course-selling-website-backend.onrender.com/api/v1/connectBackend"
         );
         const data = await response.json();
 
